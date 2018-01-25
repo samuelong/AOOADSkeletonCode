@@ -12,7 +12,11 @@ namespace AOOADSkeletonCode
         public string name;
 
         public decimal calculatePay()
+        {
+            decimal pay = 0 ;
+            return pay;
+        }
+        public void addAgent(string name)
         { }
-        public void addAgent(string name, )
     }
 }

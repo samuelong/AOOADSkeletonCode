@@ -10,7 +10,7 @@ namespace AOOADSkeletonCode
     {
         public MedicalInsurance(string name, string desc, decimal premium, DateTime payDate, DateTime endDate, Customer customer)
         {
-
+            
         }
     }
 }
