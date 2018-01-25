@@ -16,15 +16,21 @@ namespace AOOADSkeletonCode
             Customer.getCustomer("001").addPolicy("DummyPolicy", "Dummy Policy", 15, DateTime.Today.AddDays(5));
             Customer.getCustomer("001").addPolicy("OverDuePolicy", "Overdue 1, 2, 3!", 1000, DateTime.Today.AddDays(-2));
             //Running
-            string id;
-            Console.Write("User ID :");
-            id = Console.ReadLine();
-            Console.WriteLine();
-            displayCustomerPolicies(id);
-            Console.WriteLine("Customer chooses to select TestPolicy");
-            Console.WriteLine("Customer decides to pay the Premiums");
-            Console.WriteLine("Use Case Changes to \"Pay Premium By Credit Card\"");
-            Console.ReadKey();
+            // 0 - Agent 1 - Customer 2 - Administrator
+            int who = 1;
+            //Customer View Policies
+            if (who == 1)
+            {
+                string id;
+                Console.Write("User ID :");
+                id = Console.ReadLine();
+                Console.WriteLine();
+                displayCustomerPolicies(id);
+                Console.WriteLine("Customer chooses to select TestPolicy");
+                Console.WriteLine("Customer decides to pay the Premiums");
+                Console.WriteLine("Use Case Changes to \"Pay Premium By Credit Card\"");
+                Console.ReadKey();
+            }
         }
         public static void displayCustomerPolicies(string id)
         {
