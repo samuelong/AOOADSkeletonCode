@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AOOADSkeletonCode
 {
-    class MedicalInsurance : PolicyInsurance
+    class MedicalInsurance : InsurancePolicy
     {
         public MedicalInsurance(string name, string desc, decimal premium, DateTime payDate, DateTime endDate, Customer customer)
         {

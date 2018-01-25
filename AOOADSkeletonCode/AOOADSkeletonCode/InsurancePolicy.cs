@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace AOOADSkeletonCode
 {
-    class PolicyInsurance
+    class InsurancePolicy
     {
         //Contains the full list of Policy Objects
-        private static List<PolicyInsurance> list = new List<PolicyInsurance>();
+        private static List<InsurancePolicy> list = new List<InsurancePolicy>();
         //List of riders that can be applied
         //Link to Customer
         private int no;
@@ -22,7 +22,7 @@ namespace AOOADSkeletonCode
         public PolicyState pState;
 
         //Constructor
-        public PolicyInsurance(string name, string desc, decimal premium, DateTime payDate, DateTime endDate, Customer customer)
+        public InsurancePolicy(string name, string desc, decimal premium, DateTime payDate, DateTime endDate, Customer customer)
         {
             this.name = name;
             this.desc = desc;
@@ -39,10 +39,10 @@ namespace AOOADSkeletonCode
         }
 
         //Returns the list of Policies that the Customer has
-        public static List<PolicyInsurance> getPolicies(Customer cust)
+        public static List<InsurancePolicy> getPolicies(Customer cust)
         {
-            List<PolicyInsurance> myList = new List<PolicyInsurance>();
-            foreach (PolicyInsurance policy in list)
+            List<InsurancePolicy> myList = new List<InsurancePolicy>();
+            foreach (InsurancePolicy policy in list)
             {
                 if (policy.customer == cust)
                 {
@@ -53,7 +53,7 @@ namespace AOOADSkeletonCode
         }
 
         //
-        public static void addPolicy(PolicyInsurance p)
+        public static void addPolicy(InsurancePolicy p)
         {
             list.Add(p);
         }

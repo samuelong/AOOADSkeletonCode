@@ -16,6 +16,7 @@ namespace AOOADSkeletonCode
             Customer.getCustomer("001").addPolicy("DummyPolicy", "Dummy Policy", 15, DateTime.Today.AddDays(5), DateTime.Today.AddDays(100));
             Customer.getCustomer("001").addPolicy("OverDuePolicy", "Overdue 1, 2, 3!", 1000, DateTime.Today.AddDays(-2), DateTime.Today.AddDays(100));
             //Running
+
             // 0 - Agent 1 - Customer 2 - Administrator
             int who = 1;
             //Customer View Policies

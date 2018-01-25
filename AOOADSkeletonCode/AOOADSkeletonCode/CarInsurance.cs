@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AOOADSkeletonCode
 {
-    class CarInsurance : PolicyInsurance
+    class CarInsurance : InsurancePolicy
     {
     }
 }

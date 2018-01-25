@@ -27,7 +27,7 @@ namespace AOOADSkeletonCode
         }
         public void addPolicy(string name, string desc, decimal premium, DateTime payDate, DateTime date)
         {
-            PolicyInsurance.addPolicy(new PolicyInsurance(name, desc, premium, payDate, date, this));
+            InsurancePolicy.addPolicy(new InsurancePolicy(name, desc, premium, payDate, date, this));
         }
     }
 }

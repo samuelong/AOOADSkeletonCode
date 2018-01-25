@@ -49,7 +49,7 @@
     <Compile Include="CarInsurance.cs" />
     <Compile Include="Customer.cs" />
     <Compile Include="MedicalInsurance.cs" />
-    <Compile Include="PolicyInsurance.cs" />
+    <Compile Include="InsurancePolicy.cs" />
     <Compile Include="PolicyState.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
