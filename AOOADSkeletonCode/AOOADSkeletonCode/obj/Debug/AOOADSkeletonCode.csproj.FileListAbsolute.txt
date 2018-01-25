@@ -1,0 +1,9 @@
+c:\users\asus\documents\visual studio 2015\Projects\AOOADSkeletonCode\AOOADSkeletonCode\bin\Debug\AOOADSkeletonCode.exe.config
+C:\Users\ASUS\documents\visual studio 2015\Projects\AOOADSkeletonCode\AOOADSkeletonCode\bin\Debug\AOOADSkeletonCode.exe
+C:\Users\ASUS\documents\visual studio 2015\Projects\AOOADSkeletonCode\AOOADSkeletonCode\bin\Debug\AOOADSkeletonCode.pdb
+C:\Users\ASUS\documents\visual studio 2015\Projects\AOOADSkeletonCode\AOOADSkeletonCode\obj\Debug\AOOADSkeletonCode.csprojResolveAssemblyReference.cache
+C:\Users\ASUS\documents\visual studio 2015\Projects\AOOADSkeletonCode\AOOADSkeletonCode\obj\Debug\AOOADSkeletonCode.exe
+C:\Users\ASUS\documents\visual studio 2015\Projects\AOOADSkeletonCode\AOOADSkeletonCode\obj\Debug\AOOADSkeletonCode.pdb
+C:\Users\ASUS\Source\Repos\AOOADSkeletonCode\AOOADSkeletonCode\AOOADSkeletonCode\bin\Debug\AOOADSkeletonCode.exe.config
+C:\Users\ASUS\Source\Repos\AOOADSkeletonCode\AOOADSkeletonCode\AOOADSkeletonCode\obj\Debug\AOOADSkeletonCode.exe
+C:\Users\ASUS\Source\Repos\AOOADSkeletonCode\AOOADSkeletonCode\AOOADSkeletonCode\obj\Debug\AOOADSkeletonCode.pdb
