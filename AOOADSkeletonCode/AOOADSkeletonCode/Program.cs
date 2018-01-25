@@ -21,6 +21,7 @@ namespace AOOADSkeletonCode
             //Customer View Policies
             if (who == 1)
             {
+                Console.WriteLine("Customer View Policies\n");
                 string id;
                 Console.Write("User ID :");
                 id = Console.ReadLine();
@@ -40,66 +41,6 @@ namespace AOOADSkeletonCode
             {
                 Console.WriteLine("Policy: {0}\nDesc: {1}\nPremium: {4}\nOverdue: {2}\nDue Date: {3}\n==============", policy.Name, policy.Desc, (policy.endDate.Date < DateTime.Today ? true : false), policy.endDate, policy.Premium);
             }
-        }
-    }
-
-    class Customer
-    {
-        private static List<Customer> list = new List<Customer>();
-        private string id;
-        public Customer(string id)
-        {
-            this.id = id;
-        }
-        public static void addCustomer(string id)
-        {
-            if (list.Find(x => x.id == id) == null)
-            {
-                list.Add(new Customer(id));
-            }
-        }
-        public static Customer getCustomer(string id)
-        {
-            return list.Find(x => x.id == id);
-        }
-        public void addPolicy(string name, string desc, decimal premium, DateTime date)
-        {
-            Policy.addPolicy(new Policy(name, desc, premium, date, this));
-        }
-    }
-
-    class Policy
-    {
-        private static List<Policy> list = new List<Policy>();
-        private Customer customer;
-        public string Name;
-        public string Desc;
-        public DateTime endDate;
-        public decimal Premium;
-       
-        public Policy(string name, string desc, decimal premium, DateTime date, Customer cust)
-        {
-            Name = name;
-            Desc = desc;
-            Premium = premium;
-            endDate = date;
-            customer = cust;
-        }
-        public static List<Policy> getPolicies(Customer cust)
-        {
-            List<Policy> myList = new List<Policy>();
-            foreach (Policy policy in list)
-            {
-                if (policy.customer == cust)
-                {
-                    myList.Add(policy);
-                }
-            }
-            return myList;
-        }
-        public static void addPolicy(Policy p)
-        {
-            list.Add(p);
         }
     }
 }
