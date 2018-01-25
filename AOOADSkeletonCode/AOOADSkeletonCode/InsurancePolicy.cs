@@ -52,7 +52,6 @@ namespace AOOADSkeletonCode
             return myList;
         }
 
-        //
         public static void addPolicy(InsurancePolicy p)
         {
             list.Add(p);
