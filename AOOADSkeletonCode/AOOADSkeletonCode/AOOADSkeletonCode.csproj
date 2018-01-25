@@ -48,6 +48,7 @@
     <Compile Include="Agent.cs" />
     <Compile Include="CarInsurance.cs" />
     <Compile Include="Customer.cs" />
+    <Compile Include="InsurancePolicy1.cs" />
     <Compile Include="MedicalInsurance.cs" />
     <Compile Include="InsurancePolicy.cs" />
     <Compile Include="PolicyState.cs" />
