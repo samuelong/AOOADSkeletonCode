@@ -12,9 +12,9 @@ namespace AOOADSkeletonCode
         {
             //Initializing
             Customer.addCustomer("001");
-            Customer.getCustomer("001").addPolicy("TestPolicy", "Main Policy!", 300, DateTime.Today.AddDays(1));
-            Customer.getCustomer("001").addPolicy("DummyPolicy", "Dummy Policy", 15, DateTime.Today.AddDays(5));
-            Customer.getCustomer("001").addPolicy("OverDuePolicy", "Overdue 1, 2, 3!", 1000, DateTime.Today.AddDays(-2));
+            Customer.getCustomer("001").addPolicy("TestPolicy", "Main Policy!", 300, DateTime.Today.AddDays(1), DateTime.Today.AddDays(100));
+            Customer.getCustomer("001").addPolicy("DummyPolicy", "Dummy Policy", 15, DateTime.Today.AddDays(5), DateTime.Today.AddDays(100));
+            Customer.getCustomer("001").addPolicy("OverDuePolicy", "Overdue 1, 2, 3!", 1000, DateTime.Today.AddDays(-2), DateTime.Today.AddDays(100));
             //Running
             // 0 - Agent 1 - Customer 2 - Administrator
             int who = 1;
@@ -39,7 +39,7 @@ namespace AOOADSkeletonCode
             List<Policy> policyList = Policy.getPolicies(cust);
             foreach (Policy policy in policyList)
             {
-                Console.WriteLine("Policy: {0}\nDesc: {1}\nPremium: {4}\nOverdue: {2}\nDue Date: {3}\n==============", policy.Name, policy.Desc, (policy.endDate.Date < DateTime.Today ? true : false), policy.endDate, policy.Premium);
+                Console.WriteLine("Policy: {0}\nDesc: {1}\nPremium: {4}\nOverdue: {2}\nDue Date: {3}\n==============", policy.name, policy.desc, (policy.endDate.Date < DateTime.Today ? true : false), policy.endDate, policy.premium);
             }
         }
     }

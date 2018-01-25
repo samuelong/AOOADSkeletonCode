@@ -25,9 +25,9 @@ namespace AOOADSkeletonCode
         {
             return list.Find(x => x.id == id);
         }
-        public void addPolicy(string name, string desc, decimal premium, DateTime date)
+        public void addPolicy(string name, string desc, decimal premium, DateTime payDate, DateTime date)
         {
-            Policy.addPolicy(new Policy(name, desc, premium, date, this));
+            PolicyInsurance.addPolicy(new PolicyInsurance(name, desc, premium, payDate, date, this));
         }
     }
 }

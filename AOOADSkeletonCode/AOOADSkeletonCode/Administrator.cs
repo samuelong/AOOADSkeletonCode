@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace AOOADSkeletonCode
 {
-    class Rider
+    class Administrator : Agent
     {
-        public string desc;
-        public decimal additionalPremium;
-
+         
     }
 }

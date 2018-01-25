@@ -6,10 +6,13 @@ using System.Threading.Tasks;
 
 namespace AOOADSkeletonCode
 {
-    class Rider
+    class Agent
     {
-        public string desc;
-        public decimal additionalPremium;
+        public string id;
+        public string name;
 
+        public decimal calculatePay()
+        { }
+        public void addAgent(string name, )
     }
 }

@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace AOOADSkeletonCode
 {
-    class Rider
+    interface PolicyState
     {
-        public string desc;
-        public decimal additionalPremium;
 
     }
 }

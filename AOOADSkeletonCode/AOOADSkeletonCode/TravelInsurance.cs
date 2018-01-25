@@ -6,10 +6,7 @@ using System.Threading.Tasks;
 
 namespace AOOADSkeletonCode
 {
-    class Rider
+    class TravelInsurance : PolicyInsurance
     {
-        public string desc;
-        public decimal additionalPremium;
-
     }
 }
