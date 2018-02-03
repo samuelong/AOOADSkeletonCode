@@ -8,29 +8,40 @@ namespace AOOADSkeletonCode
 {
     class Customer
     {
-        private static List<Customer> list = new List<Customer>();
-        private List<InsurancePolicy> policies = new List<InsurancePolicy>();
-        private string id;
+        private PolicyCollection _myPolicies = new PolicyCollection();
+        private string _id;
         public Customer(string id)
         {
-            this.id = id;
+            _id = id;
         }
-        // Add Customer if it does not exist
-        public static void addCustomer(string id)
+
+        public string GetId()
         {
-            if (list.Find(x => x.id == id) == null)
+            return _id;
+        }
+        public void AddPolicy(InsurancePolicy policy)
+        {
+            _myPolicies.AddItem(policy);
+        }
+
+        public List<InsurancePolicy> GetPolicies()
+        {
+            return _myPolicies.GetPolicyCollection();
+        }
+
+        public List<InsurancePolicy> GetPoliciesByLapsed()
+        {
+            List<InsurancePolicy> list = new List<InsurancePolicy>();
+            PolicyIterator iter = (PolicyIterator) _myPolicies.CreateIterator();
+            while (iter.HasNext())
             {
-                list.Add(new Customer(id));
+                InsurancePolicy policy = (InsurancePolicy) iter.Next();
+                if (policy != null)
+                {
+                    list.Add(policy);
+                }
             }
-        }
-        // Return Customer object if it exist
-        public static Customer getCustomer(string id)
-        {
-            return list.Find(x => x.id == id);
-        }
-        public void addPolicy(string name, string desc, decimal premium, DateTime payDate, DateTime date)
-        {
-            policies.Add(new InsurancePolicy(name, desc, premium, payDate, date, this));
+            return list;
         }
     }
 }

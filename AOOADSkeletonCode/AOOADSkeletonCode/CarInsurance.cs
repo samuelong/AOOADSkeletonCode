@@ -8,7 +8,7 @@ namespace AOOADSkeletonCode
 {
     class CarInsurance : InsurancePolicy
     {
-        public CarInsurance(string name, string desc, decimal premium, DateTime payDate, DateTime endDate, Customer customer) : base(name, desc, premium, payDate, endDate, customer)
+        public CarInsurance(string number, string name, string desc, decimal premium, DateTime payDate, DateTime endDate) : base(number, name, desc, premium, payDate, endDate)
         {
 
         }

@@ -47,6 +47,7 @@
     <Compile Include="Agent.cs" />
     <Compile Include="CarInsurance.cs" />
     <Compile Include="Customer.cs" />
+    <Compile Include="CustomerCollection.cs" />
     <Compile Include="IPolicyCollection.cs" />
     <Compile Include="IPolicyIterator.cs" />
     <Compile Include="MedicalInsurance.cs" />
@@ -56,6 +57,7 @@
     <Compile Include="PolicyState.cs" />
     <Compile Include="Policy_ActiveState.cs" />
     <Compile Include="PolicyIterator.cs" />
+    <Compile Include="Policy_LapsedIterator.cs" />
     <Compile Include="Policy_LapsedState.cs" />
     <Compile Include="Policy_TerminatedState.cs" />
     <Compile Include="Program.cs" />

@@ -8,7 +8,7 @@ namespace AOOADSkeletonCode
 {
     class Rider
     {
-        public string desc;
-        public decimal additionalPremium;
+        public string _desc;
+        public decimal _additionalPremium;
     }
 }

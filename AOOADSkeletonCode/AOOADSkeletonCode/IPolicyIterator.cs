@@ -10,5 +10,6 @@ namespace AOOADSkeletonCode
     {
         object Next();
         bool HasNext();
+        void Reset();
     }
 }

@@ -8,31 +8,43 @@ namespace AOOADSkeletonCode
 {
     class PolicyCollection : IPolicyCollection
     {
-        private List<InsurancePolicy> list = new List<InsurancePolicy>();
+        private List<InsurancePolicy> _list = new List<InsurancePolicy>();
 
-        IPolicyIterator IPolicyCollection.CreateIterator()
+        public IPolicyIterator CreateIterator()
         {
             return new PolicyIterator(this);
         }
 
-        public InsurancePolicy GetItem(int index)
+        public InsurancePolicy GetPolicy(int index)
         {
-            return list[index];
+            if (index < _list.Count())
+                return _list[index];
+            return null;
+        }
+
+        public InsurancePolicy FindPolicy(Predicate<InsurancePolicy> p)
+        {
+            return _list.Find(p);
+        }
+
+        public List<InsurancePolicy> GetPolicyCollection()
+        {
+            return _list;
         }
 
         public void AddItem(InsurancePolicy item)
         {
-            list.Add(item);
+            _list.Add(item);
         }
 
         public void RemoveItem(int index)
         {
-            list.RemoveAt(index);
+            _list.RemoveAt(index);
         }
 
         public int Count()
         {
-            return list.Count();
+            return _list.Count();
         }
     }
 }

@@ -15,31 +15,72 @@ namespace AOOADSkeletonCode
 
 
         //List of riders that can be applied
-        //Link to Customer
-        private int no;
-        private Customer customer;
-        public string name;
-        public string desc;
-        public DateTime payDate;
-        public DateTime endDate;
-        public decimal premium;
-        public PolicyState state;
+        private string _number;
+        private string _name;
+        private string _desc;
+        private DateTime _payDate;
+        private DateTime _endDate;
+        private decimal _premium;
+        private PolicyState _state;
 
-        //Constructor
-        public InsurancePolicy(string name, string desc, decimal premium, DateTime payDate, DateTime endDate, Customer customer)
+        //GET SET
+        public string Number
         {
-            this.name = name;
-            this.desc = desc;
-            this.premium = premium;
-            this.payDate = payDate;
-            this.endDate = endDate;
-            this.customer = customer;
-            state = new Policy_ActiveState(this);
+            get { return _number; }
+        }
+        public string Name
+        {
+            get { return _name; }
+        }
+        public string Desc
+        {
+            get { return _desc; }
+        }
+        public DateTime PayDate
+        {
+            get { return _payDate; }
+        }
+        public DateTime EndDate
+        {
+            get { return _endDate; }
+        }
+        public decimal Premium
+        {
+            get { return _premium; }
+        }
+        public PolicyState State
+        {
+            get { return _state; }
         }
 
-        public void setPolicyState(PolicyState state)
+        //Constructor
+        public InsurancePolicy(string number, string name, string desc, decimal premium, DateTime payDate, DateTime endDate)
         {
-            this.state = state;
+            _number = number;
+            _name = name;
+            _desc = desc;
+            _premium = premium;
+            _payDate = payDate;
+            _endDate = endDate;
+            _state = new Policy_ActiveState(this);
+        }
+
+        public void SetPolicyState(PolicyState state)
+        {
+            _state = state;
+        }
+
+        public bool IsLapsed()
+        {
+            return PayDate.Date < DateTime.Today ? true : false;
+        }
+
+        public void SetLapsed()
+        {
+            if (IsLapsed() == true)
+            {
+                SetPolicyState(new Policy_LapsedState(this));
+            }
         }
     }
 }
