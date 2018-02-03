@@ -32,26 +32,32 @@ namespace AOOADSkeletonCode
         public static void displayCustomerPolicies(CustomerCollection customerCollection)
         {
             Console.WriteLine("Customer View Policies\n");
-            string id;
-            Console.Write("User ID :");
-            id = Console.ReadLine();
-            Console.WriteLine();
-            Customer cust = customerCollection.getCustomer(id);
+            string accNum;
+            Customer cust = null;
+            while (cust == null)
+            {
+                Console.Write("User ID :");
+                accNum = Console.ReadLine();
+                Console.WriteLine();
+                cust = customerCollection.getCustomer(accNum);
+            }
             //List<InsurancePolicy> policyList = InsurancePolicy.getPolicies(cust);
             string policyNum = "";
             while (policyNum != "-1")
             {
                 Console.WriteLine("Type -1 to leave");
-                foreach (InsurancePolicy policy in cust.GetPoliciesByLapsed())
+
+                List<InsurancePolicy> lapsedPolicyList = cust.GetPoliciesByLapsed();
+                foreach (InsurancePolicy policy in lapsedPolicyList)
                 {
-                    Console.WriteLine("No.: {0}\nPolicy: {1}\nDesc: {2}\nPremium: {5}\nOverdue: {3}\nDue Date: {4}\n==============", policy.Number, policy.Name, policy.Desc, policy.IsLapsed(), policy.EndDate, policy.Premium);
+                    Console.WriteLine("No.: {0}\nPolicy: {1}\nDesc: {2}\nPremium: {5}\nOverdue: {3}\nDue Date: {4}\n==============", policy.Number, policy.Name, policy.Desc, policy.IsLapsed(), policy.PayDate, policy.Premium);
                 }
                 Console.WriteLine("Select a Policy:");
                 policyNum = Console.ReadLine();
-                if (cust.GetPolicies().Find(x => x.Number == policyNum) != null)
+                InsurancePolicy myPolicy = lapsedPolicyList.Find(x=>x.Number == policyNum);
+                if (myPolicy != null)
                 {
-                    payPremiumByCreditCard();
-                    break;
+                    payPremiumByCreditCard(ref myPolicy);
                 }
                 else if (policyNum != "-1") { Console.WriteLine("Policy not found. Please try again"); }
             }
@@ -59,10 +65,11 @@ namespace AOOADSkeletonCode
             Console.ReadKey();
         }
 
-        public static void payPremiumByCreditCard()
+        public static void payPremiumByCreditCard(ref InsurancePolicy p)
         {
             Console.WriteLine("Use Case Changes to \"Pay Premium By Credit Card\"");
-
+            p.PayDate = p.PayDate.AddDays(30);
+            p.AutoState();
         }
     }
 }

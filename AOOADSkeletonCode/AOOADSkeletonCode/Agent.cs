@@ -8,7 +8,7 @@ namespace AOOADSkeletonCode
 {
     class Agent
     {
-        private string id;
+        private string accNum;
         public string name;
         private string type;
 

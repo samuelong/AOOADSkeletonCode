@@ -54,11 +54,13 @@
     <Compile Include="InsurancePolicy.cs" />
     <Compile Include="PayBehaviour.cs" />
     <Compile Include="PolicyCollection.cs" />
-    <Compile Include="PolicyState.cs" />
+    <Compile Include="IPolicyState.cs" />
+    <Compile Include="Policy_ActiveIterator.cs" />
     <Compile Include="Policy_ActiveState.cs" />
     <Compile Include="PolicyIterator.cs" />
     <Compile Include="Policy_LapsedIterator.cs" />
     <Compile Include="Policy_LapsedState.cs" />
+    <Compile Include="Policy_TerminatedIterator.cs" />
     <Compile Include="Policy_TerminatedState.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

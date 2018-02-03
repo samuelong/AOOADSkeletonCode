@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AOOADSkeletonCode
 {
-    interface PolicyState
+    interface IPolicyState
     {
         // Methods in Policy States
     }

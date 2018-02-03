@@ -9,9 +9,9 @@ namespace AOOADSkeletonCode
     class InsurancePolicy
     {
         //References
-        private PolicyState ActiveState;
-        private PolicyState LapsedState;
-        private PolicyState TerminatedState;
+        private IPolicyState ActiveState;
+        private IPolicyState LapsedState;
+        private IPolicyState TerminatedState;
 
 
         //List of riders that can be applied
@@ -21,7 +21,7 @@ namespace AOOADSkeletonCode
         private DateTime _payDate;
         private DateTime _endDate;
         private decimal _premium;
-        private PolicyState _state;
+        private IPolicyState _state;
 
         //GET SET
         public string Number
@@ -38,6 +38,7 @@ namespace AOOADSkeletonCode
         }
         public DateTime PayDate
         {
+            set { _payDate = value; }
             get { return _payDate; }
         }
         public DateTime EndDate
@@ -48,7 +49,7 @@ namespace AOOADSkeletonCode
         {
             get { return _premium; }
         }
-        public PolicyState State
+        public IPolicyState State
         {
             get { return _state; }
         }
@@ -62,10 +63,13 @@ namespace AOOADSkeletonCode
             _premium = premium;
             _payDate = payDate;
             _endDate = endDate;
-            _state = new Policy_ActiveState(this);
+            ActiveState = new Policy_ActiveState(this);
+            LapsedState = new Policy_LapsedState(this);
+            TerminatedState = new Policy_TerminatedState(this);
+            AutoState();
         }
 
-        public void SetPolicyState(PolicyState state)
+        public void SetPolicyState(IPolicyState state)
         {
             _state = state;
         }
@@ -74,13 +78,22 @@ namespace AOOADSkeletonCode
         {
             return PayDate.Date < DateTime.Today ? true : false;
         }
-
-        public void SetLapsed()
+        public bool IsTerminated()
         {
-            if (IsLapsed() == true)
+            return EndDate.Date < DateTime.Today ? true : false;
+        }
+
+        public void AutoState()
+        {
+            if (IsLapsed())
             {
-                SetPolicyState(new Policy_LapsedState(this));
+                SetPolicyState(LapsedState);
             }
+            else if (IsTerminated())
+            {
+                SetPolicyState(TerminatedState);
+            }
+            else { SetPolicyState(ActiveState); }
         }
     }
 }

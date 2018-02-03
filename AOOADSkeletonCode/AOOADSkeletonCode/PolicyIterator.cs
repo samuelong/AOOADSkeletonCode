@@ -14,14 +14,7 @@ namespace AOOADSkeletonCode
         public PolicyIterator(PolicyCollection collection)
         {
             _collection = collection;
-            _currIndex = 0;
-            InsurancePolicy p;
-            do
-            {
-                p = _collection.GetPolicy(_currIndex);
-                if (p == null)
-                    break;
-            } while (p.State is Policy_LapsedState);
+            _currIndex = -1;
         }
 
         virtual public bool HasNext()

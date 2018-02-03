@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AOOADSkeletonCode
 {
-    class Policy_LapsedState : PolicyState
+    class Policy_LapsedState : IPolicyState
     {
         private InsurancePolicy policy;
         public Policy_LapsedState(InsurancePolicy policy)

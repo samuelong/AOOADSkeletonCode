@@ -9,10 +9,27 @@ namespace AOOADSkeletonCode
     class PolicyCollection : IPolicyCollection
     {
         private List<InsurancePolicy> _list = new List<InsurancePolicy>();
-
+        public List<InsurancePolicy> policyList
+        {
+            get { return _list; }
+            set { _list = value; }
+        }
         public IPolicyIterator CreateIterator()
         {
             return new PolicyIterator(this);
+        }
+
+        public IPolicyIterator CreateActiveIterator()
+        {
+            return new Policy_ActiveIterator(this);
+        }
+        public IPolicyIterator CreateLapsedIterator()
+        {
+            return new Policy_LapsedIterator(this);
+        }
+        public IPolicyIterator CreateTerminatedIterator()
+        {
+            return new Policy_TerminatedIterator(this);
         }
 
         public InsurancePolicy GetPolicy(int index)
@@ -25,11 +42,6 @@ namespace AOOADSkeletonCode
         public InsurancePolicy FindPolicy(Predicate<InsurancePolicy> p)
         {
             return _list.Find(p);
-        }
-
-        public List<InsurancePolicy> GetPolicyCollection()
-        {
-            return _list;
         }
 
         public void AddItem(InsurancePolicy item)

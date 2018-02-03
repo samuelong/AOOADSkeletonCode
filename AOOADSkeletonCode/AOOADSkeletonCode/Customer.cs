@@ -9,30 +9,31 @@ namespace AOOADSkeletonCode
     class Customer
     {
         private PolicyCollection _myPolicies = new PolicyCollection();
-        private string _id;
-        public Customer(string id)
+        public PolicyCollection MyPolicies
         {
-            _id = id;
+            get { return _myPolicies; }
+            set { _myPolicies = value; }
+        }
+        private string _accNum;
+
+        public string AccNum
+        {
+            get { return _accNum; }
+        }
+        public Customer(string accNum)
+        {
+            _accNum = accNum;
         }
 
-        public string GetId()
-        {
-            return _id;
-        }
         public void AddPolicy(InsurancePolicy policy)
         {
             _myPolicies.AddItem(policy);
         }
 
-        public List<InsurancePolicy> GetPolicies()
-        {
-            return _myPolicies.GetPolicyCollection();
-        }
-
         public List<InsurancePolicy> GetPoliciesByLapsed()
         {
             List<InsurancePolicy> list = new List<InsurancePolicy>();
-            PolicyIterator iter = (PolicyIterator) _myPolicies.CreateIterator();
+            IPolicyIterator iter = _myPolicies.CreateLapsedIterator();
             while (iter.HasNext())
             {
                 InsurancePolicy policy = (InsurancePolicy) iter.Next();
