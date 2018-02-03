@@ -37,8 +37,8 @@ namespace AOOADSkeletonCode
         public static void displayCustomerPolicies(string id)
         {
             Customer cust = Customer.getCustomer(id);
-            List<Policy> policyList = Policy.getPolicies(cust);
-            foreach (Policy policy in policyList)
+            //List<InsurancePolicy> policyList = InsurancePolicy.getPolicies(cust);
+            foreach (InsurancePolicy policy in policyList)
             {
                 Console.WriteLine("Policy: {0}\nDesc: {1}\nPremium: {4}\nOverdue: {2}\nDue Date: {3}\n==============", policy.name, policy.desc, (policy.endDate.Date < DateTime.Today ? true : false), policy.endDate, policy.premium);
             }

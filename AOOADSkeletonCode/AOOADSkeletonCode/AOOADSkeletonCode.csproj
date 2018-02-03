@@ -43,15 +43,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Active.cs" />
     <Compile Include="Administrator.cs" />
     <Compile Include="Agent.cs" />
     <Compile Include="CarInsurance.cs" />
     <Compile Include="Customer.cs" />
-    <Compile Include="InsurancePolicy1.cs" />
+    <Compile Include="IPolicyCollection.cs" />
+    <Compile Include="IPolicyIterator.cs" />
     <Compile Include="MedicalInsurance.cs" />
     <Compile Include="InsurancePolicy.cs" />
+    <Compile Include="PayBehaviour.cs" />
+    <Compile Include="PolicyCollection.cs" />
     <Compile Include="PolicyState.cs" />
+    <Compile Include="Policy_ActiveState.cs" />
+    <Compile Include="PolicyIterator.cs" />
+    <Compile Include="Policy_LapsedState.cs" />
+    <Compile Include="Policy_TerminatedState.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Rider.cs" />

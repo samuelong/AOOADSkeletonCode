@@ -8,6 +8,6 @@ namespace AOOADSkeletonCode
 {
     interface PolicyState
     {
-
+        // Methods in Policy States
     }
 }

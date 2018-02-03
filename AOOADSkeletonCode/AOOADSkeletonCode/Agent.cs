@@ -8,8 +8,14 @@ namespace AOOADSkeletonCode
 {
     class Agent
     {
-        public string id;
+        private string id;
         public string name;
+        private string type;
+
+        public Agent()
+        {
+
+        }
 
         public decimal calculatePay()
         {

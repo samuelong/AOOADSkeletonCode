@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace AOOADSkeletonCode
 {
-    interface InsurancePolicy1
+    interface IPolicyCollection
     {
+        IPolicyIterator CreateIterator();
     }
 }

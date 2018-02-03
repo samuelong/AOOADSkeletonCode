@@ -8,8 +8,12 @@ namespace AOOADSkeletonCode
 {
     class InsurancePolicy
     {
-        //Contains the full list of Policy Objects
-        private static List<InsurancePolicy> list = new List<InsurancePolicy>();
+        //References
+        private PolicyState ActiveState;
+        private PolicyState LapsedState;
+        private PolicyState TerminatedState;
+
+
         //List of riders that can be applied
         //Link to Customer
         private int no;
@@ -19,7 +23,7 @@ namespace AOOADSkeletonCode
         public DateTime payDate;
         public DateTime endDate;
         public decimal premium;
-        public PolicyState pState;
+        public PolicyState state;
 
         //Constructor
         public InsurancePolicy(string name, string desc, decimal premium, DateTime payDate, DateTime endDate, Customer customer)
@@ -30,31 +34,12 @@ namespace AOOADSkeletonCode
             this.payDate = payDate;
             this.endDate = endDate;
             this.customer = customer;
-            pState = new Active();
+            state = new Policy_ActiveState(this);
         }
 
         public void setPolicyState(PolicyState state)
         {
-            pState = state;
-        }
-
-        //Returns the list of Policies that the Customer has
-        public static List<InsurancePolicy> getPolicies(Customer cust)
-        {
-            List<InsurancePolicy> myList = new List<InsurancePolicy>();
-            foreach (InsurancePolicy policy in list)
-            {
-                if (policy.customer == cust)
-                {
-                    myList.Add(policy);
-                }
-            }
-            return myList;
-        }
-
-        public static void addPolicy(InsurancePolicy p)
-        {
-            list.Add(p);
+            this.state = state;
         }
     }
 }

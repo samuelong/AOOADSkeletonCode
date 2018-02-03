@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace AOOADSkeletonCode
 {
-    class Active : PolicyState
+    interface IPolicyIterator
     {
-        
+        object Next();
+        bool HasNext();
     }
 }

@@ -6,9 +6,7 @@ using System.Threading.Tasks;
 
 namespace AOOADSkeletonCode
 {
-    class Rider
+    interface PayBehaviour
     {
-        public string desc;
-        public decimal additionalPremium;
     }
 }
