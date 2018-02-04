@@ -9,9 +9,10 @@
         {
             get { return _myCustomers; }
         }
-        public Agent()
+        public Agent(string accNum, string name)
         {
-
+            _accNum = accNum;
+            _name = name;
         }
 
         public decimal calculatePay()
@@ -20,9 +21,9 @@
             return pay;
         }
 
-        public void addCustomer(string accNum)
+        public void addCustomer(Customer customer)
         {
-            _myCustomers.addCustomer(accNum);
+            _myCustomers.addCustomer(customer);
         }
     }
 }
