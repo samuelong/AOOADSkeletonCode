@@ -20,6 +20,9 @@ namespace AOOADSkeletonCode.Entities.Policies
         private IPolicyState _state;
         private IPolicyDuration _duration;
 
+        private System.Collections.Generic.List<Rider> riderSelectedList;
+        private System.Collections.Generic.List<Rider> riderAvailableList;
+
         //GET SET
         public string Number
         {

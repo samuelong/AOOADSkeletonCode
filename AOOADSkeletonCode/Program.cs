@@ -30,29 +30,14 @@ namespace AOOADSkeletonCode
             }
             
             */
-
-            int option = 1;
+                       int option = 1;
+            int specificOption = 1;
 
             //Option 0 exits the program
             while (option != 0)
-            {                
-
-                while (true)
-                {
-                    MainMenu();
-
-                    //Asks user for inputted option
-                    try
-                    {
-                        option = Convert.ToInt32(Console.ReadLine());
-                        break;
-                    }
-                    catch
-                    {
-                        Console.WriteLine("\nInvalid option detected. Please enter a valid option.\n");
-                        continue;
-                    }
-                }
+            {
+                MainMenu();
+                option = Convert.ToInt32(Console.ReadLine());
 
                 //All Options
                 switch (option)
@@ -60,52 +45,139 @@ namespace AOOADSkeletonCode
                     case 1:
                         Console.WriteLine("\nOption 1: Agent\n");
                         AgentMainMenu();
-                        Console.WriteLine("\n");
+                        while (specificOption != 0)
+                        {
+                            specificOption = Convert.ToInt32(Console.ReadLine());
+
+                            switch (specificOption)
+                            {
+                                case 1:
+                                    Console.WriteLine("Edit Agent Info");
+                                    Console.WriteLine("\nNot yet implemented\n");
+                                    AgentMainMenu();
+                                    break;
+
+                                case 2:
+                                    Console.WriteLine("Register Customer");
+                                    Console.WriteLine("\nNot yet implemented\n");
+                                    AgentMainMenu();
+                                    break;
+
+                                case 3:
+                                    Console.WriteLine("Create New Policy");
+                                    createPolicy();
+                                    break;
+
+                                case 4:
+                                    Console.WriteLine("View Customer Policies");
+                                    AgentMainMenu();                                    
+                                    break;                                    
+                            }
+                        }
                         break;
 
-                    case 2:
+                    case 2:                        
                         Console.WriteLine("\nOption 2: Administrator");
                         AdminstratorMainMenu();
-                        Console.WriteLine("\n");
+                        while (specificOption != 0)
+                        {
+                            specificOption = Convert.ToInt32(Console.ReadLine());
+
+                            switch (specificOption)
+                            {
+                                case 1:
+                                    Console.WriteLine("Edit Policy Types");                                    
+                                    AdminstratorMainMenu();
+                                    Console.WriteLine("\nNot yet implemented\n");
+                                    break;
+
+                                case 2:
+                                    Console.WriteLine("Register Agent");
+                                    Console.WriteLine("\nNot yet implemented\n");
+                                    AdminstratorMainMenu();
+                                    break;
+
+                                case 3:
+                                    Console.WriteLine("Edit Agent Info");
+                                    Console.WriteLine("\nNot yet implemented\n");
+                                    AdminstratorMainMenu();
+                                    break;
+
+                                case 4:
+                                    Console.WriteLine("Register Customer");
+                                    Console.WriteLine("\nNot yet implemented\n");
+                                    AdminstratorMainMenu();
+                                    break;
+
+                                case 5:
+                                    Console.WriteLine("Create New Policy");
+                                    createPolicy();
+                                    break;
+
+                                case 6:
+                                    Console.WriteLine("View Customer Policies (All)");
+                                    Console.WriteLine("\nNot yet implemented\n");
+                                    AdminstratorMainMenu();
+                                    break;
+                            }
+                        }                        
+                        break;
 
                     case 3:
                         Console.WriteLine("Option 3: Customer");
                         CustomerMainMenu();
-                        Console.WriteLine("\n");
+                        while (specificOption != 0)
+                        {
+                            specificOption = Convert.ToInt32(Console.ReadLine());
+
+                            switch (specificOption)
+                            {
+                                case 1:
+                                    Console.WriteLine("View Policies");
+                                    displayCustomerPolicies(Agent1.myCustomers);
+                                    CustomerMainMenu();
+                                    break;
+                            }
+                        }
+                        break;
                 }
+                Environment.Exit(1);
             }
-            
-            Console.ReadKey();
+            Environment.Exit(1);
         }
                 
         static void MainMenu()
         /*Displays the main menu*/
         {
+            Console.Clear();
             Console.WriteLine("     Provident Life System        ");
             Console.WriteLine("==================================");
             Console.WriteLine("1. Agent");
             Console.WriteLine("2. Administrator");
             Console.WriteLine("3. Customer");
+            Console.WriteLine("0. Exit");
             Console.Write("Enter your role: ");
         }
 
 
         static void AgentMainMenu()
-        /*Displays the main menu*/
+        /*Displays the agent main menu*/
         {
+            Console.Clear();
             Console.WriteLine("     Provident Life System (Agent)       ");
             Console.WriteLine("==================================");
             Console.WriteLine("1. Edit Agent Info");
             Console.WriteLine("2. Register Customer");
             Console.WriteLine("3. Create New Policy");
             Console.WriteLine("4. View Customer Policies");
-            Console.WriteLine("5. Back");
+            Console.WriteLine("0. Exit");
             Console.Write("Select an option: ");
         }
 
         static void AdminstratorMainMenu()
-        /*Displays the main menu*/
+        /*Displays the adminstrator main menu*/
         {
+            Console.Clear();
             Console.WriteLine("     Provident Life System (Administrator)       ");
             Console.WriteLine("==================================");
             Console.WriteLine("1. Edit Policy Types");
@@ -114,23 +186,58 @@ namespace AOOADSkeletonCode
             Console.WriteLine("4. Register Customer");
             Console.WriteLine("5. Create New Policy");
             Console.WriteLine("6. View Customer Policies (All)");
-            Console.WriteLine("7. Back");
+            Console.WriteLine("0. Exit");
             Console.Write("Select an option: ");
         }
 
 
         static void CustomerMainMenu()
-        /*Displays the main menu*/
+        /*Displays the customer main menu*/
         {
             Console.WriteLine("     Provident Life System (Customer)       ");
             Console.WriteLine("==================================");
             Console.WriteLine("1. View Policies");
-            Console.WriteLine("2. Back");            
+            Console.WriteLine("0. Exit");            
             Console.Write("Select an option: ");
         }
 
 
+        public static void createPolicy()
+        {
 
+        }
+
+        public static void editPolicy()
+        {
+            Console.WriteLine("Please select the index of the customer's policy you wish to edit :  ");
+            int customerIndex = Convert.ToInt16(Console.ReadLine());
+            Console.WriteLine("Please select what needs to be edited :  ");
+            Console.WriteLine("1 : Add Rider ");
+            Console.WriteLine("2 : Pay Premium by Cheque ");
+            Console.WriteLine("3 : Select another customer's policy ");
+            Console.WriteLine("0 : Exit ");
+            int option = Convert.ToInt16(Console.ReadLine());
+            while (option != 0)
+            {
+                switch (option)
+                {
+                    case 1:
+                        addRider();
+                        break;
+
+                    case 2:
+                        //payPremiumByCheque();
+                        break;
+
+                    case 3:
+                        editPolicy();
+                        break;
+                }
+            }
+
+            Environment.Exit(1);
+
+        }
 
         public static void displayCustomerPolicies(CustomerCollection customerCollection)
         {
@@ -174,5 +281,42 @@ namespace AOOADSkeletonCode
             p.Duration.AddPayDate(p);
             p.AutoState();
         }
+
+        
+        public static void addRider()
+        {
+            
+            //p.AddRider(newRider);
+        }                            
+
+        public static void payPremiumByCheque(ref InsurancePolicy p)
+        {
+            Console.WriteLine("Use Case Changes to \"Pay Premium By Cheque\"");
+            while (true)
+            {
+                Console.WriteLine("Type in \"Confirm\" to confirm that Customer has Paid Premium by Cheque OR \"Cancel\" to return back to editing policy:   ");
+                string confirmation = Console.ReadLine();
+                confirmation.ToUpper();
+                if (confirmation == "CONFIRM")
+                {
+                    p.Duration.AddPayDate(p);
+                    p.AutoState();
+                    break;
+                }
+                else if (confirmation == "CANCEL")
+                {
+                    editPolicy();
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("Please key in a valid option");
+                    continue;
+                }
+            }
+        }
     }
+
 }
+
+
