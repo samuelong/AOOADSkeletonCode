@@ -12,6 +12,7 @@ namespace AOOADSkeletonCode
         {
             //Initializing
             List<Agent> agentList = new List<Agent>();
+            List<Receipt> receiptList = new List<Receipt>();
             agentList.Add(new Agent("001", "FIRST AGENT ALIVE"));
             CustomerCollection customerCollection = new CustomerCollection();
             //Filling
@@ -29,11 +30,11 @@ namespace AOOADSkeletonCode
             //Customer View Policies
             if (who == 1)
             {
-                displayCustomerPolicies(customerCollection);
+                displayCustomerPolicies(customerCollection, receiptList);
 
             }
         }
-        public static void displayCustomerPolicies(CustomerCollection customerCollection)
+        public static void displayCustomerPolicies(CustomerCollection customerCollection, List<Receipt> receiptList)
         {
             Console.WriteLine("Customer View Policies\n");
             string accNum;
@@ -61,7 +62,7 @@ namespace AOOADSkeletonCode
                 InsurancePolicy myPolicy = lapsedPolicyList.Find(x=>x.Number == policyNum);
                 if (myPolicy != null)
                 {
-                    payPremiumByCreditCard(myPolicy);
+                    payPremiumByCreditCard(myPolicy, receiptList);
                 }
                 else if (policyNum != "-1") { Console.WriteLine("Policy not found. Please try again"); }
             }
@@ -69,11 +70,11 @@ namespace AOOADSkeletonCode
             Console.ReadKey();
         }
 
-        public static void payPremiumByCreditCard(InsurancePolicy p)
+        public static void payPremiumByCreditCard(InsurancePolicy p, List<Receipt> receiptList)
         {
             Console.WriteLine("Use Case Changes to \"Pay Premium By Credit Card\"");
             p.Duration.AddPayDate(p);
-            
+            receiptList.Add(new Receipt(p));
             p.AutoState();
         }
     }
