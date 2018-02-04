@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{DB6EF737-5BA2-4D71-BDFF-A328B2D85B6A}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>AOOADSkeletonCode</RootNamespace>
+    <AssemblyName>AOOADSkeletonCode</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Entities\Administrator.cs" />
+    <Compile Include="Interfaces\IPayoutBahaviour\IPayoutBehaviour.cs" />
+    <Compile Include="Interfaces\IPayoutBahaviour\MedicalPayout.cs" />
+    <Compile Include="Interfaces\IPayoutBahaviour\NoPayout.cs" />
+    <Compile Include="Interfaces\IPayoutBahaviour\Payout.cs" />
+    <Compile Include="Interfaces\IPolicyDuration\Duration_Monthly.cs" />
+    <Compile Include="Interfaces\IPolicyDuration\Duration_OneTime.cs" />
+    <Compile Include="Interfaces\IPolicyDuration\Duration_Yearly.cs" />
+    <Compile Include="Interfaces\IPolicyDuration\IPolicyDuration.cs" />
+    <Compile Include="Interfaces\ISalaryBehaviour\Admin_Salary.cs" />
+    <Compile Include="Entities\Agent.cs" />
+    <Compile Include="Interfaces\ISalaryBehaviour\Agent_JuniorSalary.cs" />
+    <Compile Include="Interfaces\ISalaryBehaviour\Agent_Salary.cs" />
+    <Compile Include="Interfaces\ISalaryBehaviour\Agent_SeniorSalary.cs" />
+    <Compile Include="Entities\Policies\CarInsurance.cs" />
+    <Compile Include="Entities\Customer.cs" />
+    <Compile Include="Entities\CustomerCollection.cs" />
+    <Compile Include="Interfaces\IPolicyCollection\IPolicyCollection.cs" />
+    <Compile Include="Interfaces\IPolicyIterator\IPolicyIterator.cs" />
+    <Compile Include="Interfaces\ISalaryBehaviour\ISalaryBehaviour.cs" />
+    <Compile Include="Entities\Policies\MedicalInsurance.cs" />
+    <Compile Include="Entities\Policies\InsurancePolicy.cs" />
+    <Compile Include="Interfaces\IPolicyCollection\PolicyCollection.cs" />
+    <Compile Include="Interfaces\IPolicyState\IPolicyState.cs" />
+    <Compile Include="Interfaces\IPolicyIterator\Policy_ActiveIterator.cs" />
+    <Compile Include="Interfaces\IPolicyState\Policy_ActiveState.cs" />
+    <Compile Include="Interfaces\IPolicyIterator\PolicyIterator.cs" />
+    <Compile Include="Interfaces\IPolicyIterator\Policy_LapsedIterator.cs" />
+    <Compile Include="Interfaces\IPolicyState\Policy_LapsedState.cs" />
+    <Compile Include="Interfaces\IPolicyIterator\Policy_TerminatedIterator.cs" />
+    <Compile Include="Interfaces\IPolicyState\Policy_TerminatedState.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Entities\Rider.cs" />
+    <Compile Include="Entities\Policies\TravelInsurance.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
