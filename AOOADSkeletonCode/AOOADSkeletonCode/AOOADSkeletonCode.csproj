@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entities\Administrator.cs" />
+    <Compile Include="Entities\Receipt.cs" />
     <Compile Include="Interfaces\IPayoutBahaviour\IPayoutBehaviour.cs" />
     <Compile Include="Interfaces\IPayoutBahaviour\MedicalPayout.cs" />
     <Compile Include="Interfaces\IPayoutBahaviour\NoPayout.cs" />
