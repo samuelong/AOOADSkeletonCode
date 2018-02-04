@@ -3,14 +3,9 @@
     "",
     "\\AOOADSkeletonCode",
     "\\AOOADSkeletonCode\\AOOADSkeletonCode",
-    "\\AOOADSkeletonCode\\AOOADSkeletonCode\\Entities",
-    "\\AOOADSkeletonCode\\AOOADSkeletonCode\\Entities\\Policies",
-    "\\AOOADSkeletonCode\\AOOADSkeletonCode\\Interfaces",
-    "\\AOOADSkeletonCode\\AOOADSkeletonCode\\Interfaces\\IPayoutBahaviour",
-    "\\AOOADSkeletonCode\\AOOADSkeletonCode\\Interfaces\\IPolicyCollection",
-    "\\AOOADSkeletonCode\\AOOADSkeletonCode\\Interfaces\\IPolicyDuration",
-    "\\AOOADSkeletonCode\\AOOADSkeletonCode\\Interfaces\\IPolicyIterator"
+    "\\AOOADSkeletonCode\\AOOADSkeletonCode\\obj",
+    "\\AOOADSkeletonCode\\AOOADSkeletonCode\\Properties"
   ],
-  "SelectedNode": "\\AOOADSkeletonCode\\AOOADSkeletonCode.sln",
+  "SelectedNode": "\\AOOADSkeletonCode\\AOOADSkeletonCode\\Program.cs",
   "PreviewInSolutionExplorer": false
 }
