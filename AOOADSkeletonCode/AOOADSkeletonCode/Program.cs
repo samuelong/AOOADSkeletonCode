@@ -20,7 +20,7 @@ namespace AOOADSkeletonCode
             Agent1.myCustomers.getCustomer("001").AddPolicy(new InsurancePolicy("3", "Policy 3", "My Policy 3", 1000, DateTime.Today.AddDays(-2), new Duration_Monthly(), DateTime.Today.AddDays(100)));
             //Running
 
-            // 0 - Agent 1 - Customer 2 - Administrator
+            // 0 - Agent, 1 - Customer, 2 - Administrator
             int who = 1;
             //Customer View Policies
             if (who == 1)
@@ -36,7 +36,7 @@ namespace AOOADSkeletonCode
             Customer cust = null;
             while (cust == null)
             {
-                Console.Write("User ID :");
+                Console.Write("User ID:");
                 accNum = Console.ReadLine();
                 Console.WriteLine();
                 cust = customerCollection.getCustomer(accNum);
