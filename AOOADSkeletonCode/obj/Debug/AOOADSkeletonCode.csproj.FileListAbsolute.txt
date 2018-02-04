@@ -21,3 +21,5 @@ C:\Users\ASUS\Source\Repos\AOOADSkeletonCode\AOOADSkeletonCode\bin\Debug\AOOADSk
 C:\Users\ASUS\Source\Repos\AOOADSkeletonCode\AOOADSkeletonCode\obj\Debug\AOOADSkeletonCode.csprojResolveAssemblyReference.cache
 C:\Users\ASUS\Source\Repos\AOOADSkeletonCode\AOOADSkeletonCode\obj\Debug\AOOADSkeletonCode.exe
 C:\Users\ASUS\Source\Repos\AOOADSkeletonCode\AOOADSkeletonCode\obj\Debug\AOOADSkeletonCode.pdb
+C:\Users\ASUS\Source\Repos\AOOADSkeletonCode\AOOADSkeletonCode\bin\Debug\AOOADSkeletonCode.exe
+C:\Users\ASUS\Source\Repos\AOOADSkeletonCode\AOOADSkeletonCode\bin\Debug\AOOADSkeletonCode.pdb
