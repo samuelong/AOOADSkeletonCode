@@ -20,9 +20,9 @@
             return pay;
         }
 
-        public void addCustomer(string accNum)
+        public void addCustomer(Customer customer)
         {
-            _myCustomers.addCustomer(accNum);
+            _myCustomers.addCustomer(customer);
         }
     }
 }

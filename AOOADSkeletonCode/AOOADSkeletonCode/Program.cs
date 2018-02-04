@@ -11,13 +11,17 @@ namespace AOOADSkeletonCode
         static void Main(string[] args)
         {
             //Initializing
-            Agent Agent1 = new Agent();
+            List<Agent> agentList = new List<Agent>();
+            agentList.Add(new Agent());
+            CustomerCollection customerCollection = new CustomerCollection();
             //Filling
-            Agent1.addCustomer("001");
-            Agent1.addCustomer("002");
-            Agent1.myCustomers.getCustomer("001").AddPolicy(new InsurancePolicy("1", "Policy 1", "My Policy 1", 300, DateTime.Today.AddDays(1), new Duration_Monthly(), DateTime.Today.AddDays(100)));
-            Agent1.myCustomers.getCustomer("002").AddPolicy(new InsurancePolicy("2", "Policy 2", "My Policy 2", 15, DateTime.Today.AddDays(5), new Duration_Monthly(),DateTime.Today.AddDays(100)));
-            Agent1.myCustomers.getCustomer("001").AddPolicy(new InsurancePolicy("3", "Policy 3", "My Policy 3", 1000, DateTime.Today.AddDays(-2), new Duration_Monthly(), DateTime.Today.AddDays(100)));
+            agentList[0].myCustomers.addCustomer(new Customer("001"));
+            customerCollection.addCustomer(agentList[0].myCustomers.getCustomer("001"));
+            agentList[0].myCustomers.addCustomer(new Customer("002"));
+            customerCollection.addCustomer(agentList[0].myCustomers.getCustomer("002"));
+            agentList[0].myCustomers.getCustomer("001").AddPolicy(new InsurancePolicy("1", "Policy 1", "My Policy 1", 300, DateTime.Today.AddDays(1), new Duration_Monthly(), DateTime.Today.AddDays(100)));
+            agentList[0].myCustomers.getCustomer("002").AddPolicy(new InsurancePolicy("2", "Policy 2", "My Policy 2", 15, DateTime.Today.AddDays(5), new Duration_Monthly(),DateTime.Today.AddDays(100)));
+            agentList[0].myCustomers.getCustomer("001").AddPolicy(new InsurancePolicy("3", "Policy 3", "My Policy 3", 1000, DateTime.Today.AddDays(-2), new Duration_Monthly(), DateTime.Today.AddDays(100)));
             //Running
 
             // 0 - Agent, 1 - Customer, 2 - Administrator
@@ -25,7 +29,7 @@ namespace AOOADSkeletonCode
             //Customer View Policies
             if (who == 1)
             {
-                displayCustomerPolicies(Agent1.myCustomers);
+                displayCustomerPolicies(customerCollection);
 
             }
         }
