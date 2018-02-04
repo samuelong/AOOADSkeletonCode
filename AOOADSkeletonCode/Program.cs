@@ -36,9 +36,9 @@ namespace AOOADSkeletonCode
             customerCollection.addCustomer(agentList[0].myCustomers.getCustomer("001"));
             agentList[0].myCustomers.addCustomer(new Customer("002"));
             customerCollection.addCustomer(agentList[0].myCustomers.getCustomer("002"));
-            agentList[0].myCustomers.getCustomer("001").AddPolicy(new InsurancePolicy("1", "Policy 1", "My Policy 1", 300, DateTime.Today.AddDays(1), new Duration_Monthly(), DateTime.Today.AddDays(100), agentList[0].myCustomers.getCustomer("001")));
-            agentList[0].myCustomers.getCustomer("002").AddPolicy(new InsurancePolicy("2", "Policy 2", "My Policy 2", 15, DateTime.Today.AddDays(5), new Duration_Monthly(),DateTime.Today.AddDays(100), agentList[0].myCustomers.getCustomer("001")));
-            agentList[0].myCustomers.getCustomer("001").AddPolicy(new InsurancePolicy("3", "Policy 3", "My Policy 3", 1000, DateTime.Today.AddDays(-2), new Duration_Monthly(), DateTime.Today.AddDays(100), agentList[0].myCustomers.getCustomer("001")));
+            agentList[0].myCustomers.getCustomer("001").AddPolicy(new InsurancePolicy("1", "Policy 1", "My Policy 1", 300, DateTime.Today.AddDays(1), new Duration_Monthly(), DateTime.Today.AddDays(100), availableRiders1, agentList[0].myCustomers.getCustomer("001")));
+            agentList[0].myCustomers.getCustomer("002").AddPolicy(new InsurancePolicy("2", "Policy 2", "My Policy 2", 15, DateTime.Today.AddDays(5), new Duration_Monthly(),DateTime.Today.AddDays(100), availableRiders2, agentList[0].myCustomers.getCustomer("001")));
+            agentList[0].myCustomers.getCustomer("001").AddPolicy(new InsurancePolicy("3", "Policy 3", "My Policy 3", 1000, DateTime.Today.AddDays(-2), new Duration_Monthly(), DateTime.Today.AddDays(100), availableRiders3, agentList[0].myCustomers.getCustomer("001")));
 
             //Running
             /*
@@ -87,6 +87,7 @@ namespace AOOADSkeletonCode
 
                                 case 3:
                                     Console.WriteLine("Create New Policy");
+                                    CreatePolicy(agentList);
                                     //Brandon's Function
                                     break;
 
@@ -133,6 +134,7 @@ namespace AOOADSkeletonCode
 
                                 case 5:
                                     Console.WriteLine("Create New Policy");
+                                    CreatePolicy(agentList);
                                     //Brandon's Function
                                     break;
 
@@ -157,7 +159,7 @@ namespace AOOADSkeletonCode
                                 case 1:
                                     Console.WriteLine("View Policies");
                                     //Samuel's Function
-                                    displayCustomerPolicies(Agent1.myCustomers);
+                                    displayCustomerPolicies(agentList[0].myCustomers, receiptList);
                                     CustomerMainMenu();
                                     break;
                             }
@@ -263,6 +265,165 @@ namespace AOOADSkeletonCode
             p.Duration.AddPayDate(p);
             receiptList.Add(new Receipt(p));
             p.AutoState();
+        }
+        // Richeton's Individual Code
+
+        public static void EditPolicy(Customer customer)
+        {
+            Console.WriteLine("Please select the index of the customer's policy you wish to edit :  ");
+            int customerIndex = Convert.ToInt16(Console.ReadLine());
+
+            InsurancePolicy myPolicy = customer.MyPolicies.GetPolicy(customerIndex);
+
+
+            Console.WriteLine("Please select what needs to be edited :  ");
+            Console.WriteLine("1 : Add Rider ");
+            Console.WriteLine("2 : Pay Premium by Cheque ");
+            Console.WriteLine("3 : Select another customer's policy ");
+            Console.WriteLine("0 : Exit ");
+            int option = Convert.ToInt16(Console.ReadLine());
+            while (option != 0)
+            {
+                switch (option)
+                {
+                    case 1:
+                        AddRider(ref myPolicy);
+                        break;
+
+                    case 2:
+                        PayPremiumByCheque(ref myPolicy, customer);
+                        break;
+
+                    case 3:
+                        EditPolicy(customer);
+                        break;
+
+
+                }
+            }
+
+            Environment.Exit(1);
+
+        }
+
+
+        public static void AddRider(ref InsurancePolicy p)
+        {
+            Console.WriteLine("No.\t\t\t\tDesc\t\t\t\tAdditional Premium\t\t\t\tAdditional Payout\t\t\t\t\n==============");
+            foreach (Rider r in p.AvailableRider)
+                Console.WriteLine("No.{0}\t\t\tDesc{1}\t\t\tAdditional Premium{2}\t\t\tAdditional Payout{3}\t\t\t\n==============", r, r.Desc, r.AdditionalPremium, r.AdditionalPayout);
+
+            int option = Convert.ToInt16(Console.ReadLine());
+
+            p.AddRider(p.AvailableRider[option]);
+        }
+
+        public static void PayPremiumByCheque(ref InsurancePolicy p, Customer customer)
+        {
+            Console.WriteLine("Use Case Changes to \"Pay Premium By Cheque\"");
+            while (true)
+            {
+                Console.WriteLine("Type in \"Confirm\" to confirm that Customer has Paid Premium by Cheque OR \"Cancel\" to return back to editing policy:   ");
+                string confirmation = Console.ReadLine();
+                confirmation.ToUpper();
+                if (confirmation == "CONFIRM")
+                {
+                    p.Duration.AddPayDate(p);
+                    p.AutoState();
+                    break;
+                }
+                else if (confirmation == "CANCEL")
+                {
+                    EditPolicy(customer);
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("Please key in a valid option");
+                    continue;
+                }
+            }
+        }
+        // Jourdan's Code
+        public static void viewPolicies(CustomerCollection customerCollection)
+        {
+            Console.WriteLine("View Policies\n");
+            // possibly a while loop that goes through
+            // customerCollection and displays the policies
+            string accNum = null;
+            foreach (Customer cust in customerCollection.List)
+            {
+                List<InsurancePolicy> policyList = cust.GetPoliciesByLapsed();
+                foreach (InsurancePolicy policy in policyList)
+                {
+                    Console.WriteLine("Acc Number: {0}, Policy: {1}", policy.Number, policy.Name);
+                }
+                accNum = Console.ReadLine();
+            }
+            while (true)
+            {
+                Console.WriteLine("------------------\n");
+                Console.WriteLine("1. Filter Policy\n");
+                Console.WriteLine("2. Generate Alert\n");
+                Console.WriteLine("3. Edit Policy\n");
+                Console.WriteLine("4. Exit\n");
+                Console.WriteLine("------------------\n");
+                Console.WriteLine("Select your option: ");
+                int viewOption = Convert.ToInt32(Console.ReadLine());
+                if (viewOption == 1)
+                {
+                    // filter implementation
+
+                }
+
+                else if (viewOption == 2)
+                {
+                    // wilson's code
+                }
+
+                else if (viewOption == 3)
+                {
+                    EditPolicy(customerCollection.getCustomer(accNum)); //richeton's code
+                }
+
+                else if (viewOption == 4)
+                {
+                    break;
+                }
+
+                else
+                {
+                    Console.WriteLine("That is not a valid option");
+                }
+            }
+        }
+        // Wilson's Code
+
+        // Brandon's Code
+        public static void CreatePolicy(List<Agent> agentList)
+        {
+            Console.WriteLine("Create New Policy");
+            Console.WriteLine("Please input the client's account number: ");
+            string clientAccNum = Console.ReadLine();
+            if (agentList[0].myCustomers.getCustomer(clientAccNum).GetPoliciesByLapsed().Count != 0)
+                return;
+            else
+            {
+                Console.WriteLine("1 - Insurance Policy | 2 - Medical Insurance | 3 - Travel Insurance\nPlease input the policy type: ");
+                int policyType = Convert.ToInt32(Console.ReadLine());
+                switch (policyType)
+                {
+                    case 1:
+                        agentList[0].myCustomers.getCustomer("001").AddPolicy(new InsurancePolicy("1", "Policy 1", "My Policy 1", 300, DateTime.Today.AddDays(1), new Duration_Monthly(), DateTime.Today.AddDays(100), new List<Rider>(), agentList[0].myCustomers.getCustomer("001")));
+                        break;
+                    case 2:
+                        agentList[0].myCustomers.getCustomer("001").AddPolicy(new MedicalInsurance("2", "Policy 2", "My Policy 2", 300, DateTime.Today.AddDays(1), new Duration_Monthly(), DateTime.Today.AddDays(100), new List<Rider>(), agentList[0].myCustomers.getCustomer("001")));
+                        break;
+                    case 3:
+                        agentList[0].myCustomers.getCustomer("001").AddPolicy(new TravelInsurance("3", "Policy 3", "My Policy 3", 300, DateTime.Today.AddDays(1), new Duration_Monthly(), DateTime.Today.AddDays(100), new List<Rider>(),  agentList[0].myCustomers.getCustomer("001")));
+                        break;
+                }
+            }
         }
     }
 }
