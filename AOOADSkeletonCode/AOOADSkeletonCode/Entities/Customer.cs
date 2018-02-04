@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using AOOADSkeletonCode.Interfaces.IPolicyCollection;
+using AOOADSkeletonCode.Entities.Policies;
+using AOOADSkeletonCode.Interfaces.IPolicyIterator;
 
-namespace AOOADSkeletonCode
+namespace AOOADSkeletonCode.Entities
 {
     class Customer
     {
@@ -14,22 +13,26 @@ namespace AOOADSkeletonCode
             get { return _myPolicies; }
             set { _myPolicies = value; }
         }
-        private string _accNum;
 
+        private string _accNum;
         public string AccNum
         {
             get { return _accNum; }
         }
+
+        // Constructor
         public Customer(string accNum)
         {
             _accNum = accNum;
         }
 
+        // Adds policy to list
         public void AddPolicy(InsurancePolicy policy)
         {
             _myPolicies.AddItem(policy);
         }
 
+        // Returns a list of policies that is Lapsed
         public List<InsurancePolicy> GetPoliciesByLapsed()
         {
             List<InsurancePolicy> list = new List<InsurancePolicy>();

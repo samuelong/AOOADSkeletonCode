@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using AOOADSkeletonCode.Interfaces.IPolicyState;
+using AOOADSkeletonCode.Interfaces.IPolicyDuration;
+using System;
 
-namespace AOOADSkeletonCode
+namespace AOOADSkeletonCode.Entities.Policies
 {
     class InsurancePolicy
     {
@@ -13,8 +11,6 @@ namespace AOOADSkeletonCode
         private IPolicyState LapsedState;
         private IPolicyState TerminatedState;
 
-
-        //List of riders that can be applied
         private string _number;
         private string _name;
         private string _desc;
@@ -22,6 +18,7 @@ namespace AOOADSkeletonCode
         private DateTime _endDate;
         private decimal _premium;
         private IPolicyState _state;
+        private IPolicyDuration _duration;
 
         //GET SET
         public string Number
@@ -53,9 +50,13 @@ namespace AOOADSkeletonCode
         {
             get { return _state; }
         }
+        public IPolicyDuration Duration
+        {
+            get { return _duration; }
+        }
 
         //Constructor
-        public InsurancePolicy(string number, string name, string desc, decimal premium, DateTime payDate, DateTime endDate)
+        public InsurancePolicy(string number, string name, string desc, decimal premium, DateTime payDate, IPolicyDuration duration, DateTime endDate)
         {
             _number = number;
             _name = name;
@@ -66,6 +67,7 @@ namespace AOOADSkeletonCode
             ActiveState = new Policy_ActiveState(this);
             LapsedState = new Policy_LapsedState(this);
             TerminatedState = new Policy_TerminatedState(this);
+            _duration = duration;
             AutoState();
         }
 

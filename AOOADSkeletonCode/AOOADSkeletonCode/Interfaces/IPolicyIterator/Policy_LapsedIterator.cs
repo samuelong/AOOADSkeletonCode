@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using AOOADSkeletonCode.Entities.Policies;
+using AOOADSkeletonCode.Interfaces.IPolicyCollection;
+using AOOADSkeletonCode.Interfaces.IPolicyState;
 
-namespace AOOADSkeletonCode
+namespace AOOADSkeletonCode.Interfaces.IPolicyIterator
 {
     class Policy_LapsedIterator : PolicyIterator
     {

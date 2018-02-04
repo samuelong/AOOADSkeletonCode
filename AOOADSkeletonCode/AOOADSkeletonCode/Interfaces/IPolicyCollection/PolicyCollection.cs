@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using AOOADSkeletonCode.Entities.Policies;
+using AOOADSkeletonCode.Interfaces.IPolicyIterator;
 
-namespace AOOADSkeletonCode
+namespace AOOADSkeletonCode.Interfaces.IPolicyCollection
 {
     class PolicyCollection : IPolicyCollection
     {
@@ -14,20 +14,20 @@ namespace AOOADSkeletonCode
             get { return _list; }
             set { _list = value; }
         }
-        public IPolicyIterator CreateIterator()
+        public IPolicyIterator.IPolicyIterator CreateIterator()
         {
             return new PolicyIterator(this);
         }
 
-        public IPolicyIterator CreateActiveIterator()
+        public IPolicyIterator.IPolicyIterator CreateActiveIterator()
         {
             return new Policy_ActiveIterator(this);
         }
-        public IPolicyIterator CreateLapsedIterator()
+        public IPolicyIterator.IPolicyIterator CreateLapsedIterator()
         {
             return new Policy_LapsedIterator(this);
         }
-        public IPolicyIterator CreateTerminatedIterator()
+        public IPolicyIterator.IPolicyIterator CreateTerminatedIterator()
         {
             return new Policy_TerminatedIterator(this);
         }

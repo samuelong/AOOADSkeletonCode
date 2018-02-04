@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using AOOADSkeletonCode.Entities.Policies;
 
-namespace AOOADSkeletonCode
+namespace AOOADSkeletonCode.Interfaces.IPolicyState
 {
     class Policy_TerminatedState : IPolicyState
     {

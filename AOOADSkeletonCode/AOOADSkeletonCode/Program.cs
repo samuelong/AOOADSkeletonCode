@@ -1,8 +1,8 @@
-﻿using System;
+﻿using AOOADSkeletonCode.Entities;
+using AOOADSkeletonCode.Entities.Policies;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using AOOADSkeletonCode.Interfaces.IPolicyDuration;
 
 namespace AOOADSkeletonCode
 {
@@ -15,9 +15,9 @@ namespace AOOADSkeletonCode
             //Filling
             customerCollection.addCustomer("001");
             customerCollection.addCustomer("002");
-            customerCollection.getCustomer("001").AddPolicy(new InsurancePolicy("1", "Policy 1", "My Policy 1", 300, DateTime.Today.AddDays(1), DateTime.Today.AddDays(100)));
-            customerCollection.getCustomer("002").AddPolicy(new InsurancePolicy("2", "Policy 2", "My Policy 2", 15, DateTime.Today.AddDays(5), DateTime.Today.AddDays(100)));
-            customerCollection.getCustomer("001").AddPolicy(new InsurancePolicy("3", "Policy 3", "My Policy 3", 1000, DateTime.Today.AddDays(-2), DateTime.Today.AddDays(100)));
+            customerCollection.getCustomer("001").AddPolicy(new InsurancePolicy("1", "Policy 1", "My Policy 1", 300, DateTime.Today.AddDays(1), new Duration_Monthly(), DateTime.Today.AddDays(100)));
+            customerCollection.getCustomer("002").AddPolicy(new InsurancePolicy("2", "Policy 2", "My Policy 2", 15, DateTime.Today.AddDays(5), new Duration_Monthly(),DateTime.Today.AddDays(100)));
+            customerCollection.getCustomer("001").AddPolicy(new InsurancePolicy("3", "Policy 3", "My Policy 3", 1000, DateTime.Today.AddDays(-2), new Duration_Monthly(), DateTime.Today.AddDays(100)));
             //Running
 
             // 0 - Agent 1 - Customer 2 - Administrator
@@ -68,7 +68,7 @@ namespace AOOADSkeletonCode
         public static void payPremiumByCreditCard(ref InsurancePolicy p)
         {
             Console.WriteLine("Use Case Changes to \"Pay Premium By Credit Card\"");
-            p.PayDate = p.PayDate.AddDays(30);
+            p.Duration.AddPayDate(p);
             p.AutoState();
         }
     }
