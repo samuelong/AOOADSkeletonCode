@@ -32,15 +32,34 @@ namespace AOOADSkeletonCode
             //Running
 
             // 0 - Agent 1 - Customer 2 - Administrator
+            List<Agent> agentList = new List<Agent>();
+            agentList.Add(new Agent("001", "FIRST AGENT ALIVE"));
+            CustomerCollection customerCollection = new CustomerCollection();
+            List<Receipt> receiptList = new List<Receipt>();
+            //Filling
+            agentList[0].myCustomers.addCustomer(new Customer("001"));
+            customerCollection.addCustomer(agentList[0].myCustomers.getCustomer("001"));
+            agentList[0].myCustomers.getCustomer("001").AddPolicy(new InsurancePolicy("1", "Policy 1", "My Policy 1", 300, DateTime.Today.AddDays(1), new Duration_Monthly(), DateTime.Today.AddDays(100), agentList[0].myCustomers.getCustomer("001")));
+            agentList[0].myCustomers.getCustomer("001").AddPolicy(new InsurancePolicy("2", "Policy 2", "My Policy 2", 15, DateTime.Today.AddDays(5), new Duration_Monthly(),DateTime.Today.AddDays(100), agentList[0].myCustomers.getCustomer("001")));
+            agentList[0].myCustomers.getCustomer("001").AddPolicy(new InsurancePolicy("3", "Policy 3", "My Policy 3", 1000, DateTime.Today.AddDays(-2), new Duration_Monthly(), DateTime.Today.AddDays(100), agentList[0].myCustomers.getCustomer("001")));
+            //Running
+
+            // 0 - Agent, 1 - Customer, 2 - Administrator
             int who = 1;
             //Customer View Policies
             if (who == 1)
             {
+<<<<<<< HEAD
                 displayCustomerPolicies(Agent1.myCustomers);
 
             }
         }
         public static void displayCustomerPolicies(CustomerCollection customerCollection)
+                displayCustomerPolicies(customerCollection, receiptList);
+
+            }
+        }
+        public static void displayCustomerPolicies(CustomerCollection customerCollection, List<Receipt> receipts)
         {
             Console.WriteLine("Customer View Policies\n");
             string accNum;
@@ -69,6 +88,8 @@ namespace AOOADSkeletonCode
                 if (myPolicy != null)
                 {
                     payPremiumByCreditCard(ref myPolicy);
+=======
+                    payPremiumByCreditCard(myPolicy, receipts);
                 }
                 else if (policyNum != "-1") { Console.WriteLine("Policy not found. Please try again"); }
             }
@@ -76,6 +97,7 @@ namespace AOOADSkeletonCode
             Console.ReadKey();
         }
 
+<<<<<<< HEAD
         public static void payPremiumByCreditCard(ref InsurancePolicy p)
         {
             Console.WriteLine("Use Case Changes to \"Pay Premium By Credit Card\"");
@@ -84,3 +106,14 @@ namespace AOOADSkeletonCode
         }
     }
 }
+=======
+        public static void payPremiumByCreditCard(InsurancePolicy p, List<Receipt> receipts )
+        {
+            Console.WriteLine("Use Case Changes to \"Pay Premium By Credit Card\"");
+            p.Duration.AddPayDate(p);
+            receipts.Add(new Receipt(p));
+            p.AutoState();
+        }
+    }
+}
+>>>>>>> parent of c11dcf5... Revert "test"
