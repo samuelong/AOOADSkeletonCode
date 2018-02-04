@@ -14,13 +14,6 @@ namespace AOOADSkeletonCode.Entities
             set { _myPolicies = value; }
         }
 
-        private Agent _myAgent;
-
-        public Agent MyAgent
-        {
-            get { return _myAgent; }
-        }
-
         private string _accNum;
         public string AccNum
         {
