@@ -1,6 +1,7 @@
 ﻿using AOOADSkeletonCode.Interfaces.IPolicyState;
 using AOOADSkeletonCode.Interfaces.IPolicyDuration;
 using System;
+using System.Collections.Generic;
 
 namespace AOOADSkeletonCode.Entities.Policies
 {
@@ -20,6 +21,9 @@ namespace AOOADSkeletonCode.Entities.Policies
         private IPolicyState _state;
         private IPolicyDuration _duration;
         private Customer _customer;
+
+        private List<Rider> riderSelectedList;
+        private List<Rider> riderAvailableList;
 
         //GET SETw
         public string Number
@@ -55,9 +59,13 @@ namespace AOOADSkeletonCode.Entities.Policies
         {
             get { return _duration; }
         }
+        public List<Rider> AvailableRider
+        {
+            get { return riderAvailableList; }
+        }
 
         //Constructor
-        public InsurancePolicy(string number, string name, string desc, decimal premium, DateTime payDate, IPolicyDuration duration, DateTime endDate, Customer customer)
+        public InsurancePolicy(string number, string name, string desc, decimal premium, DateTime payDate, IPolicyDuration duration, DateTime endDate, List<Rider> rAL, Customer customer)
         {
             _number = number;
             _name = name;
@@ -65,6 +73,7 @@ namespace AOOADSkeletonCode.Entities.Policies
             _premium = premium;
             _payDate = payDate;
             _endDate = endDate;
+            riderAvailableList = rAL;
             ActiveState = new Policy_ActiveState(this);
             LapsedState = new Policy_LapsedState(this);
             TerminatedState = new Policy_TerminatedState(this);
@@ -98,6 +107,11 @@ namespace AOOADSkeletonCode.Entities.Policies
                 SetPolicyState(TerminatedState);
             }
             else { SetPolicyState(ActiveState); }
+        }
+
+        public void AddRider(Rider r)
+        {
+            riderSelectedList.Add(r);
         }
     }
 }

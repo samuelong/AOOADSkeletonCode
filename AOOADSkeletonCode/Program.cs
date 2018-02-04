@@ -11,10 +11,26 @@ namespace AOOADSkeletonCode
         static void Main(string[] args)
         {
             //Initializing
+            Rider Rider1 = new Rider("Rider 1", 100, 1000);
+            Rider Rider2 = new Rider("Rider 2", 200, 3000);
+            Rider Rider3 = new Rider("Rider 3", 300, 6000);
+
+            List<Rider> availableRiders1 = new List<Rider>();
+            availableRiders1.Add(Rider1);
+            availableRiders1.Add(Rider2);
+            availableRiders1.Add(Rider3);
+
+            List<Rider> availableRiders2 = new List<Rider>();
+            availableRiders1.Add(Rider2);
+
+            List<Rider> availableRiders3 = new List<Rider>();
+            availableRiders1.Add(Rider1);
+
             List<Agent> agentList = new List<Agent>();
             List<Receipt> receiptList = new List<Receipt>();
             agentList.Add(new Agent("001", "FIRST AGENT ALIVE"));
             CustomerCollection customerCollection = new CustomerCollection();
+
             //Filling
             agentList[0].myCustomers.addCustomer(new Customer("001"));
             customerCollection.addCustomer(agentList[0].myCustomers.getCustomer("001"));
@@ -23,17 +39,188 @@ namespace AOOADSkeletonCode
             agentList[0].myCustomers.getCustomer("001").AddPolicy(new InsurancePolicy("1", "Policy 1", "My Policy 1", 300, DateTime.Today.AddDays(1), new Duration_Monthly(), DateTime.Today.AddDays(100), agentList[0].myCustomers.getCustomer("001")));
             agentList[0].myCustomers.getCustomer("002").AddPolicy(new InsurancePolicy("2", "Policy 2", "My Policy 2", 15, DateTime.Today.AddDays(5), new Duration_Monthly(),DateTime.Today.AddDays(100), agentList[0].myCustomers.getCustomer("001")));
             agentList[0].myCustomers.getCustomer("001").AddPolicy(new InsurancePolicy("3", "Policy 3", "My Policy 3", 1000, DateTime.Today.AddDays(-2), new Duration_Monthly(), DateTime.Today.AddDays(100), agentList[0].myCustomers.getCustomer("001")));
-            //Running
 
-            // 0 - Agent, 1 - Customer, 2 - Administrator
+            //Running
+            /*
+            // 0 - Agent 1 - Customer 2 - Administrator
             int who = 1;
             //Customer View Policies
             if (who == 1)
             {
-                displayCustomerPolicies(customerCollection, receiptList);
-
+                displayCustomerPolicies(Agent1.myCustomers);
             }
+            
+            */
+
+            int option = 1;
+            int specificOption = 1;
+
+            //Option 0 exits the program
+            while (option != 0)
+            {
+                MainMenu();
+                option = Convert.ToInt32(Console.ReadLine());
+
+                //All Options
+                switch (option)
+                {
+                    case 1:
+                        Console.WriteLine("\nOption 1: Agent\n");
+                        AgentMainMenu();
+                        while (specificOption != 0)
+                        {
+                            specificOption = Convert.ToInt32(Console.ReadLine());
+
+                            switch (specificOption)
+                            {
+                                case 1:
+                                    Console.WriteLine("Edit Agent Info");
+                                    Console.WriteLine("\nNot yet implemented\n");
+                                    AgentMainMenu();
+                                    break;
+
+                                case 2:
+                                    Console.WriteLine("Register Customer");
+                                    Console.WriteLine("\nNot yet implemented\n");
+                                    AgentMainMenu();
+                                    break;
+
+                                case 3:
+                                    Console.WriteLine("Create New Policy");
+                                    //Brandon's Function
+                                    break;
+
+                                case 4:
+                                    Console.WriteLine("View Customer Policies");
+                                    //Jourdan's Function        
+                                    break;
+                            }
+                        }
+                        break;
+
+                    case 2:
+                        Console.WriteLine("\nOption 2: Administrator");
+                        AdminstratorMainMenu();
+                        while (specificOption != 0)
+                        {
+                            specificOption = Convert.ToInt32(Console.ReadLine());
+
+                            switch (specificOption)
+                            {
+                                case 1:
+                                    Console.WriteLine("Edit Policy Types");
+                                    Console.WriteLine("\nNot yet implemented\n");
+                                    AdminstratorMainMenu();
+                                    break;
+
+                                case 2:
+                                    Console.WriteLine("Register Agent");
+                                    Console.WriteLine("\nNot yet implemented\n");
+                                    AdminstratorMainMenu();
+                                    break;
+
+                                case 3:
+                                    Console.WriteLine("Edit Agent Info");
+                                    Console.WriteLine("\nNot yet implemented\n");
+                                    AdminstratorMainMenu();
+                                    break;
+
+                                case 4:
+                                    Console.WriteLine("Register Customer");
+                                    Console.WriteLine("\nNot yet implemented\n");
+                                    AdminstratorMainMenu();
+                                    break;
+
+                                case 5:
+                                    Console.WriteLine("Create New Policy");
+                                    //Brandon's Function
+                                    break;
+
+                                case 6:
+                                    Console.WriteLine("View Customer Policies (All)");
+                                    Console.WriteLine("\nNot yet implemented\n");
+                                    AdminstratorMainMenu();
+                                    break;
+                            }
+                        }
+                        break;
+
+                    case 3:
+                        Console.WriteLine("Option 3: Customer");
+                        CustomerMainMenu();
+                        while (specificOption != 0)
+                        {
+                            specificOption = Convert.ToInt32(Console.ReadLine());
+
+                            switch (specificOption)
+                            {
+                                case 1:
+                                    Console.WriteLine("View Policies");
+                                    //Samuel's Function
+                                    displayCustomerPolicies(Agent1.myCustomers);
+                                    CustomerMainMenu();
+                                    break;
+                            }
+                        }
+                        break;
+                }
+                Environment.Exit(1);
+            }
+            Environment.Exit(1);
         }
+
+        static void MainMenu()
+        /*Displays the main menu*/
+        {
+            Console.WriteLine("     Provident Life System        ");
+            Console.WriteLine("==================================");
+            Console.WriteLine("1. Agent");
+            Console.WriteLine("2. Administrator");
+            Console.WriteLine("3. Customer");
+            Console.WriteLine("0. Exit");
+            Console.Write("Enter your role: ");
+        }
+
+
+        static void AgentMainMenu()
+        /*Displays the agent main menu*/
+        {
+            Console.WriteLine("     Provident Life System (Agent)       ");
+            Console.WriteLine("==================================");
+            Console.WriteLine("1. Edit Agent Info");
+            Console.WriteLine("2. Register Customer");
+            Console.WriteLine("3. Create New Policy");
+            Console.WriteLine("4. View Customer Policies");
+            Console.WriteLine("0. Exit");
+            Console.Write("Select an option: ");
+        }
+
+        static void AdminstratorMainMenu()
+        /*Displays the adminstrator main menu*/
+        {
+            Console.WriteLine("     Provident Life System (Administrator)       ");
+            Console.WriteLine("==================================");
+            Console.WriteLine("1. Edit Policy Types");
+            Console.WriteLine("2. Register Agent");
+            Console.WriteLine("3. Edit Agent Info");
+            Console.WriteLine("4. Register Customer");
+            Console.WriteLine("5. Create New Policy");
+            Console.WriteLine("6. View Customer Policies (All)");
+            Console.WriteLine("0. Exit");
+            Console.Write("Select an option: ");
+        }
+
+
+        static void CustomerMainMenu()
+        /*Displays the customer main menu*/
+        {
+            Console.WriteLine("     Provident Life System (Customer)       ");
+            Console.WriteLine("==================================");
+            Console.WriteLine("1. View Policies");
+            Console.WriteLine("0. Exit");
+            Console.Write("Select an option: ");
+        }
+
         public static void displayCustomerPolicies(CustomerCollection customerCollection, List<Receipt> receiptList)
         {
             Console.WriteLine("Customer View Policies\n");
