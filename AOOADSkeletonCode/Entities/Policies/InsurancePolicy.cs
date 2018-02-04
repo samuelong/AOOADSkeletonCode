@@ -63,6 +63,10 @@ namespace AOOADSkeletonCode.Entities.Policies
         {
             get { return riderAvailableList; }
         }
+        public Customer Customer
+        {
+            get { return _customer; }
+        }
 
         //Constructor
         public InsurancePolicy(string number, string name, string desc, decimal premium, DateTime payDate, IPolicyDuration duration, DateTime endDate, List<Rider> rAL, Customer customer)
@@ -113,5 +117,6 @@ namespace AOOADSkeletonCode.Entities.Policies
         {
             riderSelectedList.Add(r);
         }
+
     }
 }

@@ -94,6 +94,7 @@ namespace AOOADSkeletonCode
                                 case 4:
                                     Console.WriteLine("View Customer Policies");
                                     //Jourdan's Function        
+                                    viewPolicies(customerCollection);
                                     break;
                             }
                         }
@@ -274,16 +275,15 @@ namespace AOOADSkeletonCode
             int customerIndex = Convert.ToInt16(Console.ReadLine());
 
             InsurancePolicy myPolicy = customer.MyPolicies.GetPolicy(customerIndex);
-
-
-            Console.WriteLine("Please select what needs to be edited :  ");
-            Console.WriteLine("1 : Add Rider ");
-            Console.WriteLine("2 : Pay Premium by Cheque ");
-            Console.WriteLine("3 : Select another customer's policy ");
-            Console.WriteLine("0 : Exit ");
-            int option = Convert.ToInt16(Console.ReadLine());
+            int option = -1;
             while (option != 0)
             {
+                Console.WriteLine("Please select what needs to be edited :  ");
+                Console.WriteLine("1 : Add Rider ");
+                Console.WriteLine("2 : Pay Premium by Cheque ");
+                Console.WriteLine("3 : Select another customer's policy ");
+                Console.WriteLine("0 : Exit ");
+                option = Convert.ToInt16(Console.ReadLine());
                 switch (option)
                 {
                     case 1:
@@ -325,8 +325,7 @@ namespace AOOADSkeletonCode
             {
                 Console.WriteLine("Type in \"Confirm\" to confirm that Customer has Paid Premium by Cheque OR \"Cancel\" to return back to editing policy:   ");
                 string confirmation = Console.ReadLine();
-                confirmation.ToUpper();
-                if (confirmation == "CONFIRM")
+                if (confirmation.ToUpper() == "CONFIRM")
                 {
                     p.Duration.AddPayDate(p);
                     p.AutoState();
@@ -350,15 +349,25 @@ namespace AOOADSkeletonCode
             Console.WriteLine("View Policies\n");
             // possibly a while loop that goes through
             // customerCollection and displays the policies
-            string accNum = null;
+            string policyNumber = null;
+            List<InsurancePolicy> policyList = null;
             foreach (Customer cust in customerCollection.List)
             {
-                List<InsurancePolicy> policyList = cust.GetPoliciesByLapsed();
+                policyList = cust.GetPoliciesByLapsed();
                 foreach (InsurancePolicy policy in policyList)
                 {
-                    Console.WriteLine("Acc Number: {0}, Policy: {1}", policy.Number, policy.Name);
+                    int index = 1;
+                    Console.WriteLine("Policy Number: {0}, Policy: {1}", policy.Number, policy.Name);
                 }
-                accNum = Console.ReadLine();
+            }
+            policyNumber = Console.ReadLine();
+            Customer theCustomer = null;
+            foreach(Customer cust in customerCollection.List)
+            {
+                if (cust.MyPolicies.FindPolicy(x => x.Number == policyNumber) != null)
+                {
+                    theCustomer = cust;
+                }
             }
             while (true)
             {
@@ -383,7 +392,7 @@ namespace AOOADSkeletonCode
 
                 else if (viewOption == 3)
                 {
-                    EditPolicy(customerCollection.getCustomer(accNum)); //richeton's code
+                    EditPolicy(theCustomer); //richeton's code
                 }
 
                 else if (viewOption == 4)
