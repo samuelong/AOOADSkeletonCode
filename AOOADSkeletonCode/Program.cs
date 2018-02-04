@@ -61,7 +61,7 @@ namespace AOOADSkeletonCode
                 InsurancePolicy myPolicy = lapsedPolicyList.Find(x=>x.Number == policyNum);
                 if (myPolicy != null)
                 {
-                    payPremiumByCreditCard(ref myPolicy);
+                    payPremiumByCreditCard(myPolicy);
                 }
                 else if (policyNum != "-1") { Console.WriteLine("Policy not found. Please try again"); }
             }
@@ -69,10 +69,11 @@ namespace AOOADSkeletonCode
             Console.ReadKey();
         }
 
-        public static void payPremiumByCreditCard(ref InsurancePolicy p)
+        public static void payPremiumByCreditCard(InsurancePolicy p)
         {
             Console.WriteLine("Use Case Changes to \"Pay Premium By Credit Card\"");
             p.Duration.AddPayDate(p);
+            
             p.AutoState();
         }
     }
