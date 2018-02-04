@@ -19,8 +19,9 @@ namespace AOOADSkeletonCode.Entities.Policies
         private decimal _premium;
         private IPolicyState _state;
         private IPolicyDuration _duration;
+        private Customer _customer;
 
-        //GET SET
+        //GET SETw
         public string Number
         {
             get { return _number; }
@@ -56,7 +57,7 @@ namespace AOOADSkeletonCode.Entities.Policies
         }
 
         //Constructor
-        public InsurancePolicy(string number, string name, string desc, decimal premium, DateTime payDate, IPolicyDuration duration, DateTime endDate)
+        public InsurancePolicy(string number, string name, string desc, decimal premium, DateTime payDate, IPolicyDuration duration, DateTime endDate, Customer customer)
         {
             _number = number;
             _name = name;
@@ -68,6 +69,7 @@ namespace AOOADSkeletonCode.Entities.Policies
             LapsedState = new Policy_LapsedState(this);
             TerminatedState = new Policy_TerminatedState(this);
             _duration = duration;
+            _customer = customer;
             AutoState();
         }
 

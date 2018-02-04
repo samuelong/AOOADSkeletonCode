@@ -7,13 +7,15 @@ namespace AOOADSkeletonCode.Entities
         private List<Customer> list = new List<Customer>();
 
         // Add Customer if it does not exist
-        public void addCustomer(string accNum)
+
+        public void addCustomer(Customer cust)
         {
-            if (list.Find(x => x.AccNum == accNum) == null)
+            if (list.Find(x => x.AccNum == cust.AccNum) == null)
             {
-                list.Add(new Customer(accNum));
+                list.Add(cust);
             }
         }
+
         // Return Customer object if it exist
         public Customer getCustomer(string accNum)
         {
